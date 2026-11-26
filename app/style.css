@@ -1,0 +1,166 @@
+/* Anggaran Rumah Tangga — gaya situs: kertas hangat, hijau daun, aksen terakota. */
+:root {
+  --paper: #faf6ef;
+  --card: #fffdf8;
+  --ink: #22301f;
+  --ink-soft: #5c6656;
+  --line: #e3dccb;
+  --green: #2e6b3e;
+  --green-deep: #1e4d2a;
+  --green-soft: #e2efe4;
+  --terra: #c25e3a;
+  --terra-soft: #fbe9e0;
+  --gold: #b98a1d;
+  --gold-soft: #f7ecd2;
+  --blue: #2f5d8a;
+  --blue-soft: #e2ebf3;
+  --red: #a83226;
+  --radius: 14px;
+  --shadow: 0 1px 3px rgb(34 48 31 / 0.08), 0 6px 18px rgb(34 48 31 / 0.06);
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 16px/1.55 "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+}
+a { color: var(--green); }
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+.muted { color: var(--ink-soft); }
+.small { font-size: 13px; }
+
+/* Bilah atas */
+.topbar { background: var(--green-deep); color: #fff; position: sticky; top: 0; z-index: 10; }
+.topbar-in { display: flex; align-items: center; gap: 24px; min-height: 64px; flex-wrap: wrap; padding-top: 8px; padding-bottom: 8px; }
+.brand { display: flex; align-items: center; gap: 12px; color: #fff; text-decoration: none; }
+.brand-mark {
+  display: grid; place-items: center; width: 42px; height: 42px; border-radius: 12px;
+  background: var(--gold); color: #fff; font-weight: 800; font-size: 17px; letter-spacing: .5px;
+}
+.brand-text { display: flex; flex-direction: column; line-height: 1.25; }
+.brand-text strong { font-size: 17px; }
+.brand-text small { color: #cfe3d2; font-size: 12.5px; }
+.nav { display: flex; gap: 4px; margin-left: auto; flex-wrap: wrap; }
+.nav a {
+  color: #dceade; text-decoration: none; font-weight: 600; font-size: 14.5px;
+  padding: 8px 12px; border-radius: 999px;
+}
+.nav a:hover { background: rgb(255 255 255 / 0.12); }
+.nav a.active { background: #fff; color: var(--green-deep); }
+
+/* Kartu dan tata letak */
+main { padding: 28px 0 40px; }
+h1 { font-size: 28px; line-height: 1.2; margin: 4px 0 6px; }
+h2 { font-size: 20px; margin: 0 0 12px; }
+h3 { font-size: 16px; margin: 0 0 8px; }
+.lede { color: var(--ink-soft); margin: 0 0 20px; max-width: 70ch; }
+.card {
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+  box-shadow: var(--shadow); padding: 20px; margin-bottom: 20px;
+}
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.grid-2 { display: grid; grid-template-columns: 1.15fr 1fr; gap: 20px; align-items: start; }
+.grid-2-even { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; }
+.grid-4 > *, .grid-2 > *, .grid-2-even > * { min-width: 0; }
+.kpi .label { font-size: 13px; color: var(--ink-soft); font-weight: 600; text-transform: uppercase; letter-spacing: .4px; }
+.kpi .value { font-size: 26px; font-weight: 800; margin: 4px 0 2px; font-variant-numeric: tabular-nums; }
+.kpi .note { font-size: 13.5px; color: var(--ink-soft); }
+.kpi.good .value { color: var(--green); }
+.kpi.warn .value { color: var(--terra); }
+.pill {
+  display: inline-block; font-size: 12.5px; font-weight: 700; padding: 2px 10px; border-radius: 999px;
+  background: var(--green-soft); color: var(--green-deep);
+}
+.pill.over { background: var(--terra-soft); color: var(--red); }
+.pill.under { background: var(--gold-soft); color: #7a5c08; }
+
+/* Bilah anggaran */
+.budget-row { padding: 12px 0; border-bottom: 1px solid var(--line); }
+.budget-row:last-child { border-bottom: 0; }
+.budget-head { display: flex; justify-content: space-between; gap: 12px; font-weight: 600; }
+.budget-head .amounts { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.bar { height: 10px; border-radius: 999px; background: #ece5d3; margin-top: 8px; overflow: hidden; }
+.bar > i { display: block; height: 100%; border-radius: 999px; background: var(--green); }
+.bar > i.over { background: var(--terra); }
+.bar > i.near { background: var(--gold); }
+.budget-meta { display: flex; justify-content: space-between; font-size: 13px; color: var(--ink-soft); margin-top: 6px; }
+
+/* Tabel */
+.table-scroll { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+th, td { text-align: left; padding: 9px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-size: 12.5px; text-transform: uppercase; letter-spacing: .4px; color: var(--ink-soft); }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+tr:last-child td { border-bottom: 0; }
+.cat { display: inline-block; font-size: 12.5px; font-weight: 700; padding: 2px 9px; border-radius: 999px; background: var(--blue-soft); color: var(--blue); }
+.cat.c-belanja { background: var(--green-soft); color: var(--green-deep); }
+.cat.c-makan { background: var(--terra-soft); color: var(--terra); }
+.cat.c-transport { background: var(--blue-soft); color: var(--blue); }
+.cat.c-tagihan { background: #e9e4f5; color: #5b4a8a; }
+.cat.c-pendidikan { background: var(--gold-soft); color: #7a5c08; }
+.cat.c-kesehatan { background: #fde8ec; color: #8a2f4d; }
+.cat.c-hiburan { background: #e6f2f0; color: #20655e; }
+.cat.c-tabungan { background: var(--green-soft); color: var(--green-deep); }
+.cat.c-pemasukan { background: var(--green-soft); color: var(--green-deep); }
+
+/* Formulir */
+form.add { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+form.add .full { grid-column: 1 / -1; }
+label { display: block; font-size: 13px; font-weight: 700; color: var(--ink-soft); margin-bottom: 4px; }
+input, select {
+  width: 100%; padding: 10px 12px; border: 1px solid #cfc7b2; border-radius: 10px;
+  background: #fff; color: var(--ink); font: inherit; font-size: 15px;
+}
+input:focus, select:focus { outline: 3px solid #bcd8bf; border-color: var(--green); }
+button {
+  font: inherit; font-weight: 700; cursor: pointer; border: 0; border-radius: 999px;
+  background: var(--green); color: #fff; padding: 11px 20px;
+}
+button:hover { background: var(--green-deep); }
+button.ghost { background: transparent; color: var(--green); border: 1.5px solid var(--green); padding: 8px 16px; }
+button.ghost:hover { background: var(--green-soft); }
+button.small-btn { padding: 6px 12px; font-size: 13.5px; }
+.form-msg { font-size: 14px; font-weight: 600; color: var(--green); min-height: 20px; margin: 8px 0 0; }
+.toolbar { display: flex; gap: 10px; align-items: end; flex-wrap: wrap; margin-bottom: 14px; }
+.toolbar .field { min-width: 180px; }
+
+/* Tujuan tabungan */
+.goal { display: flex; gap: 16px; align-items: center; padding: 14px 0; border-bottom: 1px solid var(--line); }
+.goal:last-child { border-bottom: 0; }
+.goal .goal-info { flex: 1; min-width: 0; }
+.goal .goal-info .amounts { font-variant-numeric: tabular-nums; }
+.goal .bar { margin-top: 6px; }
+.goal .pct { font-size: 22px; font-weight: 800; color: var(--green); min-width: 64px; text-align: right; font-variant-numeric: tabular-nums; }
+
+/* Donat dan grafik */
+.chart-wrap { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
+.legend { list-style: none; margin: 0; padding: 0; font-size: 14px; }
+.legend li { display: flex; gap: 8px; align-items: center; padding: 3px 0; }
+.legend .swatch { width: 12px; height: 12px; border-radius: 4px; flex: none; }
+.legend .amt { margin-left: auto; padding-left: 16px; font-variant-numeric: tabular-nums; font-weight: 600; }
+.donut-center { font-size: 13px; fill: var(--ink-soft); }
+.donut-total { font-size: 19px; font-weight: 800; fill: var(--ink); }
+svg.chart { width: 100%; max-width: 100%; height: auto; display: block; }
+.tip { background: var(--gold-soft); border: 1px solid #e8d5a4; border-radius: 12px; padding: 14px 16px; font-size: 14.5px; }
+.tip strong { color: #7a5c08; }
+.footer { border-top: 1px solid var(--line); padding: 22px 0 34px; color: var(--ink-soft); font-size: 13.5px; }
+.footer p { margin: 4px 0; }
+.empty { color: var(--ink-soft); font-style: italic; }
+
+/* Telepon */
+@media (max-width: 820px) {
+  .grid-4 { grid-template-columns: 1fr 1fr; }
+  .grid-2, .grid-2-even { grid-template-columns: 1fr; }
+  .topbar-in { gap: 8px; }
+  .nav { margin-left: 0; }
+  .nav a { padding: 7px 10px; font-size: 13.5px; }
+  h1 { font-size: 24px; }
+  .kpi .value { font-size: 22px; }
+  form.add { grid-template-columns: 1fr; }
+  th.hide-phone, td.hide-phone { display: none; }
+}
+@media (max-width: 460px) {
+  .grid-4 { grid-template-columns: 1fr; }
+}
